@@ -1,21 +1,20 @@
-import './App.css'
 import "./app.scss";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import NavBar from "./components/navbar";
 
 function App() {
-  const Layout = () => {
+// const Layout = () => {
     return (
       <div className="app">
+        <NavBar />
 
       </div>
     )
-  }
-  const router = createBrowserRouter([
-  ]);
+  // }
+  // const router = createBrowserRouter([
+  // ]);
 
-  return <RouterProvider router={router} />;
+  // return <RouterProvider router={router} />;
 }
 
-    {
-}
 export default App;
