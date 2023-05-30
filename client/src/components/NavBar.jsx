@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import "/src/assets/css/navbar.scss";
+import "/src/assets/css/components/navbar.scss";
 
 const NavBar = () => {
 
   const [active, setActive] = useState(false);
   const [openTab, setOpenTab] = useState(false);
+
+  //To keep Navbar white while in categories
+  const {pathname} = useLocation();
 
   //Sticky navbar when scrolled
   const isActive = () => {
@@ -20,44 +23,48 @@ const NavBar = () => {
     };
   }, []);
 
-  //Logged in user
-  const currentUser = {
-    id:1,
-    username:"John Doe",
-    isCustomer: false,
-    isPro: true
-  }
+  // Logged in user
 
   // const currentUser = {
-  //   id:2,
+  //   id:1,
   //   username:"John Doe",
-  //   isCustomer: true,
-  //   isPro: false,
+  //   isCustomer: false,
+  //   isPro: true
   // }
 
+  const currentUser = {
+    id:2,
+    username:"Jane Foster",
+    isCustomer: true,
+    isPro: false,
+  }
+
   return (
-    <div className={active ? "navbar active" : "navbar"}>
+    <div className={active || pathname !== "/" ? "navbar active" : "navbar"}>
       <div className='container'>
         <div className='logo'>
-        {/* <Link to="/">  */}
+        <Link to="/" className="link"> 
           <span className='text'>haus</span>
-        {/* </Link> */}
+        </Link>
           <span className='dot'>.</span>
         </div>
         <div className='links'>
           <span>Explore</span>    
           <span>Search</span>
-          {!currentUser &&
-          <span>Sign in</span>
-          }
           {!currentUser?.isPro || currentUser?.isCustomer &&
             <span>Pro</span>
           }
           {!currentUser?.isCustomer || currentUser?.isPro &&
             <span>Customer</span>
           }
+          {/* {!currentUser &&
+            <span>Sign in</span>
+          } */}
           {!currentUser &&
-            <button>Join</button>
+            <>
+              <span>Sign in</span>
+              <button>Join</button>
+            </>
           }
           {currentUser && (
             <div className="user" onClick={()=>setOpenTab(!openTab)}>
@@ -68,13 +75,13 @@ const NavBar = () => {
               <div className="options">
                 {currentUser?.isPro && (
                     <>
-                      <span>Jobs</span>
-                      <span>New Job</span>
+                      <Link className="link" to="/myprojects">Project</Link>
+                      <Link className="link" to="/addproject">Add new project</Link>
                     </>
                 )}
-                <span>Orders</span>
-                <span>Messages</span>
-                <span>Logout</span>
+                <Link className="link" to="/orders">Orders</Link>
+                <Link className="link" to="/messages">Messages</Link>
+                <Link className="link" to="/logout">Logout</Link>
               
               </div>
               }
@@ -82,7 +89,7 @@ const NavBar = () => {
           )}
         </div>
       </div>
-      { active && (
+      { (active || pathname !== "/") && (
       <>
         <hr />
         <div className="menu">
