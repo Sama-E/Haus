@@ -7,8 +7,8 @@ import Footer from "./components/Footer";
 import Orders from "./pages/orders/Orders";
 import Projects from "./pages/customers/Projects";
 import Project from "./pages/customers/Project";
-import addProject from "./pages/pros/addProject";
-import myProjects from "./pages/pros/myProjects";
+import AddProject from "./pages/pros/AddProject";
+import MyProjects from "./pages/pros/MyProjects";
 import Messages from "./pages/messages/Messages";
 import Message from "./pages/messages/Message";
 
@@ -45,11 +45,11 @@ const Layout = () => {
         },
         {
           path:"/myprojects/:id",
-          element: <myProjects />
+          element: <MyProjects />
         },
         {
           path:"/addproject",
-          element: <addProject />
+          element: <AddProject />
         },
         {
           path:"/messages",
