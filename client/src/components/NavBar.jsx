@@ -93,8 +93,12 @@ const NavBar = () => {
       <>
         <hr />
         <div className="menu">
-          <span>test</span>
-          <span>test1</span>
+          <span>Trends</span>
+          <span>Remodels</span>
+          <span>Maintenance</span>
+          <span>DYI</span>
+          <span>Home Tech</span>
+          <span>Safety and Security</span>
         </div>
       </>
       )}

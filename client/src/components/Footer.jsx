@@ -7,17 +7,17 @@ const Footer = () => {
         <div className="top">
           <div className="item">
             <h2>Categories</h2>
-            <span>Graphics & Design</span>
-            <span>Digital Marketing</span>
-            <span>Writing & Translation</span>
-            <span>Video & Animation</span>
-            <span>Music & Audio</span>
-            <span>Programming & Tech</span>
-            <span>Data</span>
-            <span>Business</span>
-            <span>Lifestyle</span>
-            <span>Photography</span>
-            <span>Sitemap</span>
+            <span>Roofing & Gutters</span>
+            <span>Siding</span>
+            <span>Windows</span>
+            <span>Doors</span>
+            <span>Solar</span>
+            <span>AC & Heating</span>
+            <span>Flooring</span>
+            <span>Bathrooms</span>
+            <span>Kitchens</span>
+            <span>Home Security</span>
+            <span>Landscaping</span>
           </div>
           <div className="item">
             <h2>About</h2>
@@ -33,8 +33,8 @@ const Footer = () => {
             <h2>Support</h2>
             <span>Help & Support</span>
             <span>Trust & Safety</span>
-            <span>Selling on Liverr</span>
-            <span>Buying on Liverr</span>
+            <span>Selling on .Haus</span>
+            <span>Buying on .Haus</span>
           </div>
           <div className="item">
             <h2>Community</h2>
@@ -51,17 +51,13 @@ const Footer = () => {
             <span>Community Standards</span>
           </div>
           <div className="item">
-            <h2>More From Fiverr</h2>
+            <h2>More From .Haus</h2>
             <span>.Haus Business</span>
             <span>.Haus Pro</span>
-            <span>.Haus Logo Maker</span>
             <span>.Haus Guides</span>
             <span>Get Inspired</span>
-            <span>.Haus Select</span>
-            <span>ClearVoice</span>
-            <span>.Haus Workspace</span>
-            <span>Learn</span>
-            <span>Working Not Working</span>
+            <span>.Haus Project Planner</span>
+            <span>DYI</span>
           </div>
         </div>
         <hr />

@@ -6,9 +6,9 @@ import Home from "./pages/home/Home";
 import Footer from "./components/Footer";
 import Orders from "./pages/orders/Orders";
 import Projects from "./pages/customers/Projects";
-import Project from "./pages/customers/Project";
-import AddProject from "./pages/pros/AddProject";
-import MyProjects from "./pages/pros/MyProjects";
+import AddContract from "./pages/pros/AddContract";
+import Contract from "./pages/pros/Contract";
+import Contracts from "./pages/pros/Contracts";
 import Messages from "./pages/messages/Messages";
 import Message from "./pages/messages/Message";
 
@@ -36,20 +36,20 @@ const Layout = () => {
           element: <Orders />
         },
         {
-          path:"/projects",
+          path:"/contracts",
+          element: <Contracts />
+        },
+        {
+          path:"/contract/:id",
+          element: <Contract />
+        },
+        {
+          path:"/addcontract",
+          element: <AddContract />
+        },
+        {
+          path:"/projects/:id",
           element: <Projects />
-        },
-        {
-          path:"/project/:id",
-          element: <Project />
-        },
-        {
-          path:"/myprojects/:id",
-          element: <MyProjects />
-        },
-        {
-          path:"/addproject",
-          element: <AddProject />
         },
         {
           path:"/messages",
