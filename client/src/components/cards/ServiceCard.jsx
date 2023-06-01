@@ -1,10 +1,10 @@
-import "/src/assets/css/components/cards/contractcard.scss";
+import "/src/assets/css/components/cards/servicecard.scss";
 import { Link } from 'react-router-dom';
 
-const ContractCard = ({item}) => {
+const ServiceCard = ({item}) => {
   return (
-    <Link to="/contract/1234">
-      <div className="contractcard">
+    <Link to="/service/1234" className="link">
+      <div className="servicecard">
         <img src={item.img} alt="" />
         <div className="info">
           <div className="user">
@@ -30,4 +30,4 @@ const ContractCard = ({item}) => {
   )
 }
 
-export default ContractCard
+export default ServiceCard;

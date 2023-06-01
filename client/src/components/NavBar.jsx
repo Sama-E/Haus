@@ -75,11 +75,11 @@ const NavBar = () => {
               <div className="options">
                 {currentUser?.isPro && (
                     <>
-                      <Link className="link" to="/myprojects">Project</Link>
-                      <Link className="link" to="/addproject">Add new project</Link>
+                      <Link className="link" to="/myprojects">Service</Link>
+                      <Link className="link" to="/addproject">Add New Service</Link>
                     </>
                 )}
-                <Link className="link" to="/orders">Orders</Link>
+                <Link className="link" to="/contracts">Contracts</Link>
                 <Link className="link" to="/messages">Messages</Link>
                 <Link className="link" to="/logout">Logout</Link>
               
@@ -93,13 +93,14 @@ const NavBar = () => {
       <>
         <hr />
         <div className="menu">
-          <span>Trends</span>
-          <span>Remodels</span>
-          <span>Maintenance</span>
-          <span>DYI</span>
-          <span>Home Tech</span>
-          <span>Safety and Security</span>
+          <Link className="link" to=""><span>Trends</span></Link>
+          <Link className="link" to=""><span>Remodels</span></Link>
+          <Link className="link" to=""><span>Maintenance</span></Link>
+          <Link className="link" to=""><span>DYI</span></Link>
+          <Link className="link" to=""><span>Home Tech</span></Link>
+          <Link className="link" to=""><span>Safety and Security</span></Link>
         </div>
+        <hr />
       </>
       )}
     </div>

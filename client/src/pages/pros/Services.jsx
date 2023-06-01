@@ -1,12 +1,10 @@
+import React from 'react';
+import "/src/assets/css/pages/pros/services.scss";
 import { useState } from "react";
-import "/src/assets/css/pages/pros/contracts.scss";
-import ContractCard from "/src/components/cards/ContractCard";
-import { contracts, projects } from "/src/data.js";
+import ServiceCard from "/src/components/cards/ServiceCard";
+import { services } from "/src/data.js";
 
-
-
-
-const Contracts = () => {
+const Services = () => {
 
   const [open, setOpen] = useState(false);
   const [sort, setSort] = useState("sales");
@@ -17,7 +15,7 @@ const Contracts = () => {
   }
 
   return (
-    <div className="contracts">
+    <div className="services">
       <div className="container">
         <span className="breadcrumbs">.HAUS / HOUSE & HOME </span>
         <h1>House Stuff</h1>
@@ -26,7 +24,7 @@ const Contracts = () => {
         </p>
         <div className="menu">
           <div className="left">
-            <span>Budge</span>
+            <span>Budget</span>
             <input type="text" placeholder='min' />
             <input type="text" placeholder='max' />
             <button>Apply</button>
@@ -47,8 +45,8 @@ const Contracts = () => {
           </div>
         </div>
         <div className="cards">
-          {contracts.map((contract) => (
-            <ContractCard key={contract.id} item={contract} />
+          {services.map((service) => (
+            <ServiceCard key={service.id} item={service} />
           ))}
         </div>
       </div>
@@ -56,4 +54,4 @@ const Contracts = () => {
   )
 }
 
-export default Contracts;
+export default Services;

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const CategoryCard = ({item}) => {
   return (
-    <Link to="/contracts?category=design">
+    <Link to="/services?category=design">
       <div className="categorycard">
         <img src={item.img} alt="" />
         <span className="desc">{item.desc}</span>
