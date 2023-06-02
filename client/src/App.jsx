@@ -75,8 +75,7 @@ const Layout = () => {
           element: <Messages />
         },
         {
-          // path:"/message/:id"
-          path:"/message/1",
+          path:"/message/:id",
           element: <Message />
         },
       ]
