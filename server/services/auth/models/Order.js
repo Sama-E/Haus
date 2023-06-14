@@ -6,23 +6,15 @@ const orderSchema = new Schema({
     type: String,
     required: true,
   },
+  reviewId:{
+    type: String,
+    required: true,
+  },
+  img:{
+    type: String,
+    required: false,
+  },
   title:{
-    type: String,
-    required: true,
-  },
-  desc:{
-    type: String,
-    required: true,
-  },
-  totalStars:{
-    type: Number,
-    default: 0,
-  },
-  starNumber:{
-    type: String,
-    default: 0,
-  },
-  category:{
     type: String,
     required: true,
   },
@@ -30,37 +22,21 @@ const orderSchema = new Schema({
     type: Number,
     required: true,
   },
-  cover:{
+  buyerId:{
     type: String,
     required: true,
   },
-  images:{
-    type: [String],
-    required: false,
-  },
-  shortTitle:{
+  sellerId:{
     type: String,
     required: true,
   },
-  shortDesc:{
+  isCompleted:{
+    type: Boolean,
+    default: false,
+  },
+  payment_intent:{
     type: String,
     required: true,
-  },
-  deliveryTime:{
-    type: Number,
-    required: true,
-  },
-  revision:{
-    type: Number,
-    required: true,
-  },
-  features:{
-    type: [String],
-    required: false,
-  },
-  sales:{
-    type: Number,
-    default: 0,
   },
 },
 { timestamps: true
