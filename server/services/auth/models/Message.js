@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
-const serviceSchema = new Schema({
+const messageSchema = new Schema({
   userId:{
     type: String,
     required: true,
@@ -66,4 +66,4 @@ const serviceSchema = new Schema({
 { timestamps: true
 });
 
-export default mongoose.model("Service", serviceSchema);
+export default mongoose.model("Message", messageSchema);
