@@ -1,15 +1,15 @@
 import express from "express";
 import dotenv from 'dotenv';
 import connect from "../auth/db.js";
-import userRoutes from "./routes/user.route.js";
+import orderRoutes from "./routes/order.route.js";
 
 dotenv.config();
 
 const app = express();
 
-app.use("/api/users", userRoutes);
+app.use("/api/orders", orderRoutes);
 
-app.listen(8800, () => {
+app.listen(8802, () => {
   connect();
   console.log("Running");
 })
