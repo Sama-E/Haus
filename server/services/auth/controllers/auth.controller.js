@@ -1,3 +1,4 @@
+import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 import bcrypt from "bcrypt";
 
@@ -33,11 +34,24 @@ export const login = async (req, res) => {
     const isCorrect = bcrypt.compareSync(req.body.password, user.password);
     //If user input password is wrong
     if(!isCorrect) return res.status(400).send("Wrong username or password!");
-
+    
     //Successful login - send user credentials 
+
+    //Token
+    const token = jwt.sign({
+      id: user._id,
+      isSeller: user.isSeller
+    }, process.env.JWT_KEY
+    );
+
     //To homepage w/out password
-    const {password, ...info} = 
-    res.status(200).send(info);
+    const {password, ...info} = user._doc
+    res
+      .cookie("accessToken", token, {
+        httpOnly:true,
+      })
+      .status(200)
+      .send(info);
   } catch(err) {
 
     res.status(500).send("Something went wrong")
