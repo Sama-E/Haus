@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import "/src/assets/css/components/navbar.scss";
 import newRequest from '/src/utils/newRequest';
 
 const NavBar = () => {
 
   const [active, setActive] = useState(false);
-  const [openTab, setOpenTab] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  const navigate = useNavigate();
 
   //To keep Navbar white while in categories
   const {pathname} = useLocation();
@@ -54,7 +56,7 @@ const NavBar = () => {
           {!currentUser?.isSeller && <span>Become a Seller</span>}
           {currentUser ? (
             <div className="user" onClick={() => setOpen(!open)}>
-              <img src={currentUser.img || "/img/noavatar.jpg"} alt="" />
+              <img src={currentUser.img || "/images/noavatar.jpg"} alt="" />
               <span>{currentUser?.username}</span>
               {open && (
                 <div className="options">
@@ -66,7 +68,7 @@ const NavBar = () => {
                 )}
                 <Link className="link" to="/contracts">Contracts</Link>
                 <Link className="link" to="/messages">Messages</Link>
-                <Link className="link" to="/logout">Logout</Link>
+                <Link className="link" onClick={handleLogout}>Logout</Link>
               
               </div>
               )}
