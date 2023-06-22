@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "/src/assets/css/pages/auth/login.scss";
-import newRequest from "../../utils/newRequest";
+import newRequest from '/src/utils/newRequest';
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {

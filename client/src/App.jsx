@@ -6,17 +6,13 @@ import Home from "./pages/home/Home";
 import Footer from "./components/Footer";
 import Messages from "./pages/messages/Messages";
 import Message from "./pages/messages/Message";
-
-// import Projects from "./pages/customers/Projects";
-// import AddContract from "./pages/pros/AddContract";
-// import Contract from "./pages/pros/Contract";
-// import MyContracts from "./pages/pros/MyContracts";
 import Contracts from "./pages/contract/Contracts";
-
 import Service from "./pages/pros/Service";
 import Services from "./pages/pros/Services";
 import MyServices from "./pages/pros/MyServices";
 import AddService from "./pages/pros/AddService";
+import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
 
 
 function App() {
@@ -34,6 +30,14 @@ const Layout = () => {
       path: "/",
       element: <Layout />,
       children: [
+        {
+          path: "/register",
+          element: <Register />,
+        },
+        {
+          path: "/login",
+          element: <Login />,
+        },
         {
           path:"/",
           element: <Home />

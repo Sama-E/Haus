@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import "/src/assets/css/components/navbar.scss";
+import newRequest from '/src/utils/newRequest';
 
 const NavBar = () => {
 
@@ -23,21 +24,20 @@ const NavBar = () => {
     };
   }, []);
 
-  // Logged in user
+  // Logged in User
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-  // const currentUser = {
-  //   id:1,
-  //   username:"John Doe",
-  //   isCustomer: false,
-  //   isPro: true
-  // }
 
-  const currentUser = {
-    id:2,
-    username:"Jane Foster",
-    isCustomer: true,
-    isPro: false,
-  }
+  //Logout
+  const handleLogout = async () => {
+    try {
+      await newRequest.post("/auth/logout");
+      localStorage.setItem("currentUser", null);
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className={active || pathname !== "/" ? "navbar active" : "navbar"}>
@@ -51,29 +51,14 @@ const NavBar = () => {
         <div className='links'>
           <span>Explore</span>    
           <span>Search</span>
-          {!currentUser?.isPro || currentUser?.isCustomer &&
-            <span>Pro</span>
-          }
-          {!currentUser?.isCustomer || currentUser?.isPro &&
-            <span>Customer</span>
-          }
-          {/* {!currentUser &&
-            <span>Sign in</span>
-          } */}
-          {!currentUser &&
-            <>
-              <span>Sign in</span>
-              <button>Join</button>
-            </>
-          }
-          {currentUser && (
-            <div className="user" onClick={()=>setOpenTab(!openTab)}>
-              <img src="https://images.pexels.com/photos/1115697/pexels-photo-1115697.jpeg?auto=compress&cs=tinysrgb&w=1600" 
-              alt="Profile Pic" />
+          {!currentUser?.isSeller && <span>Become a Seller</span>}
+          {currentUser ? (
+            <div className="user" onClick={() => setOpen(!open)}>
+              <img src={currentUser.img || "/img/noavatar.jpg"} alt="" />
               <span>{currentUser?.username}</span>
-              { openTab &&             
-              <div className="options">
-                {currentUser?.isPro && (
+              {open && (
+                <div className="options">
+                  {currentUser.isSeller && (
                     <>
                       <Link className="link" to="/myprojects">Service</Link>
                       <Link className="link" to="/addproject">Add New Service</Link>
@@ -84,8 +69,15 @@ const NavBar = () => {
                 <Link className="link" to="/logout">Logout</Link>
               
               </div>
-              }
+              )}
             </div>
+          ) :  (
+            <>
+              <Link to="/login" className="link">Sign in</Link>
+              <Link className="link" to="/register">
+                <button>Join</button>
+              </Link>
+            </>
           )}
         </div>
       </div>
