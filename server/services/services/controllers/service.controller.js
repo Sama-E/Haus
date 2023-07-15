@@ -2,10 +2,33 @@ import createError from "../../../utils/createError.js";
 import Service from "../models/Service.js";
 
 //GET all services
-export const getServices = (req, res) => {
+//Filter categories, prices, title search queries, user
+export const getServices = async (req, res, next) => {
+  const q = req.query;
+
+  //Filters
+  const filters = {
+    //category
+    //If there is a query category, spread object
+    //If no category, continue
+    ...(q.category && {category: q.category}),
+    //price(min and max)
+    ...((q.min || q.max) && {price:{
+      //min
+      ...(q.min && {$gt: q.min}),
+      //max
+      ...(q.max && {$lt: q.max}),
+      },
+    }),
+    //search title
+    ...(q.search && {title: { $regex: q.search, $options: "i" } }),
+    //userId filter
+    ...(q.userId && { userId: q.userId }),
+  };
 
   try {
-
+    const services = await Service.find(filters).sort({ [q.sort]: -1 });
+    res.status(200).send(services)
   } catch (err) {
     next(err);
   }
@@ -13,7 +36,7 @@ export const getServices = (req, res) => {
 };
 
 //GET one service
-export const oneService = async (req, res) => {
+export const oneService = async (req, res, next) => {
 
   try {
     const oneService = await Service.findById(req.params.id);
