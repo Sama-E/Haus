@@ -9,7 +9,7 @@ import { verifyToken } from "../../../middleware/jwt.js";
 
 const router = express.Router();
 
-router.get("/allservices", getServices);
+router.get("/services", getServices);
 router.get("/:id", verifyToken, oneService);
 router.post("/new", verifyToken, newService);
 router.delete("/:id", verifyToken, deleteService);
