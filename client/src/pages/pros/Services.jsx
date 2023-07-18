@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import "/src/assets/css/pages/pros/services.scss";
 import { useState } from "react";
 import ServiceCard from "/src/components/cards/ServiceCard";
 import { services } from "/src/data.js";
+import newRequest from '/src/utils/newRequest';
+import { useQuery } from '@tanstack/react-query';
 
 const Services = () => {
 
   const [open, setOpen] = useState(false);
   const [sort, setSort] = useState("sales");
+  const minRef = useRef();
+  const maxRef = useRef();
+
+  const { isLoading, error, data } = useQuery({
+    queryKey: ['repoData'],
+    queryFn: () =>
+      newRequest("/services/")
+  })
+
+  console.log(data)
 
   const reSort = (type) => {
     setSort(type);
@@ -25,8 +37,8 @@ const Services = () => {
         <div className="menu">
           <div className="left">
             <span>Budget</span>
-            <input type="text" placeholder='min' />
-            <input type="text" placeholder='max' />
+            <input ref={minRef} type="number" placeholder="min" />
+            <input ref={maxRef} type="number" placeholder="max" />
             <button>Apply</button>
           </div>
           <div className="right">

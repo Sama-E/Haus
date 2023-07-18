@@ -1,5 +1,9 @@
 import "./app.scss";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
 
 import NavBar from "./components/NavBar";
 import Home from "./pages/home/Home";
@@ -16,77 +20,82 @@ import Register from "./pages/auth/Register";
 
 
 function App() {
-const Layout = () => {
-    return (
-      <div className="app">
-        <NavBar />
-        <Outlet />
-        <Footer />
-      </div>
-    )
-  }
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Layout />,
-      children: [
-        {
-          path: "/register",
-          element: <Register />,
-        },
-        {
-          path: "/login",
-          element: <Login />,
-        },
-        {
-          path:"/",
-          element: <Home />
-        },
-        {
-          path:"/services",
-          element: <Services />
-        },
-        {
-          path:"/service/:id",
-          element: <Service />
-        },
-        {
-          path:"/addservice",
-          element: <AddService />
-        },
-        {
-          path:"/myservices",
-          element: <MyServices />
-        },
-        {
-          path:"/contracts",
-          element: <Contracts />
-        },
-        // {
-        //   path:"/contract/:id",
-        //   element: <Contract />
-        // },
-        // {
-        //   path:"/addcontract",
-        //   element: <AddContract />
-        // },
-        // {
-        //   path:"/mycontracts",
-        //   element: <MyContracts />
-        // },
-        {
-          path:"/messages",
-          element: <Messages />
-        },
-        {
-          path:"/message/:id",
-          element: <Message />
-        },
-      ]
-    },
-  ]);
 
-  return <RouterProvider router={router} />;
+  const queryClient = new QueryClient()
+
+  const Layout = () => {
+      return (
+        <div className="app">
+          <QueryClientProvider client={queryClient}>
+            <NavBar />
+            <Outlet />
+            <Footer />
+          </QueryClientProvider>
+        </div>
+      )
+    }
+    const router = createBrowserRouter([
+      {
+        path: "/",
+        element: <Layout />,
+        children: [
+          {
+            path: "/register",
+            element: <Register />,
+          },
+          {
+            path: "/login",
+            element: <Login />,
+          },
+          {
+            path:"/",
+            element: <Home />
+          },
+          {
+            path:"/services",
+            element: <Services />
+          },
+          {
+            path:"/service/:id",
+            element: <Service />
+          },
+          {
+            path:"/addservice",
+            element: <AddService />
+          },
+          {
+            path:"/myservices",
+            element: <MyServices />
+          },
+          {
+            path:"/contracts",
+            element: <Contracts />
+          },
+          // {
+          //   path:"/contract/:id",
+          //   element: <Contract />
+          // },
+          // {
+          //   path:"/addcontract",
+          //   element: <AddContract />
+          // },
+          // {
+          //   path:"/mycontracts",
+          //   element: <MyContracts />
+          // },
+          {
+            path:"/messages",
+            element: <Messages />
+          },
+          {
+            path:"/message/:id",
+            element: <Message />
+          },
+        ]
+      },
+    ]);
+
+    return <RouterProvider router={router} />;
 }
 
 export default App;
